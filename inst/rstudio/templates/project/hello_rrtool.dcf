@@ -57,6 +57,12 @@ Label: Use GitHub README.rmd?
 Default: Off
 Position: left
 
+Parameter: checkGitData
+Widget: CheckboxInput
+Label: Push Data Folder?
+Default: Off
+Position: left
+
 #Parameter: checkCI
 #Widget: CheckboxInput
 #Label: Use Continuous Integration?
