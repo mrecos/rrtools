@@ -47,6 +47,14 @@ init_rrtools <- function(path, ...){
   } else {
     MIT_string <- ""
   }
+  if(isTRUE(dots[["checkGitData"]])){
+    # GH_data_string <- paste0('cat(c("*/data/*"), file=file.path("',
+    #                          path, '",".gitignore"), append=TRUE)',
+    #                          collapse='')
+    GH_data_string <- 'cat(c("*/data/*"), file=file.path(getwd(),".gitignore"), append=TRUE)'
+    } else {
+    GH_data_string <- NULL
+  }
   if(isTRUE(dots[["checkGH"]]) & length(dots[["textGH"]]) > 0){
     GH_token  <- dots[["textGH"]]
     GH_private <- dots[["checkGHPrivate"]]
@@ -77,6 +85,7 @@ init_rrtools <- function(path, ...){
       analysis_string,
       MIT_string,
       README_string,
+      GH_data_string,
       GH_string,
     '})'
   )
@@ -86,6 +95,7 @@ init_rrtools <- function(path, ...){
 
   writeLines(contents, con = file.path(path, "ProjectTemplate"))
   writeLines(rprofile_text, con = file.path(path, ".Rprofile"))
+  cat(c(".Rprofile","Rprofile_init"), sep="\n", file=file.path(path, ".gitignore"), append=TRUE)
 }
 
 #' @name use_compendium2

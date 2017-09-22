@@ -59,7 +59,7 @@ Position: left
 
 Parameter: checkGitData
 Widget: CheckboxInput
-Label: Push Data Folder?
+Label: Exclude Data Folder from GitHub?
 Default: Off
 Position: left
 
