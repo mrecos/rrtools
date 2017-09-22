@@ -1,5 +1,5 @@
 Binding: init_rrtools
-Title: Basic rrtools Compendium
+Title: Create Research Compendium
 OpenFiles: ProjectTemplate
 
 Parameter: textName
@@ -29,7 +29,7 @@ Position: right
 
 Parameter: checkGH
 Widget: CheckboxInput
-Label: Use GitHub? (req. token)
+Label: Use GitHub? (requires a token)
 Default: Off
 Position: left
 
@@ -47,26 +47,26 @@ Position: right
 
 Parameter: checkMIT
 Widget: CheckboxInput
-Label: Use MIT License
+Label: Use MIT License?
 Default: Off
 Position: left
 
 Parameter: checkREADME
 Widget: CheckboxInput
-Label: Use GH README.rmd?
+Label: Use GitHub README.rmd?
 Default: Off
 Position: left
 
 #Parameter: checkCI
 #Widget: CheckboxInput
-#Label: Use CI?
+#Label: Use Continuous Integration?
 #Default: Off
 #Position: left
 
 #Parameter: selectCI
 #Widget: SelectInput
 #Label: Select CI Type
-#Fields: None, Travis CI, Circile CI
+#Fields: None, Travis CI, Circle CI
 #Default: None
 #Position: left
 
