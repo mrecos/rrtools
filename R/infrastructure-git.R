@@ -35,7 +35,7 @@ use_git_with_config <- function(message, pkg, add_user_config = FALSE, quiet = F
     git2r::config(r, global = FALSE, user.name = "user", user.email = "user@email.xx")
   }
 
-  use_git_ignore(c(".Rproj.user", ".Rhistory", ".RData", "Rprofile_init"), pkg = pkg, quiet = quiet)
+  use_git_ignore(c(".Rproj.user", ".Rhistory", ".RData"), pkg = pkg, quiet = quiet)
 
   if (!quiet) {
     message("* Adding files and committing")
@@ -125,7 +125,11 @@ use_github <- function(auth_token = github_pat(), private = FALSE, pkg = ".",
     return(invisible())
   }
 
+  message("* This is the updated version...")
   message("* Creating GitHub repository")
+  print(str(pkg))
+  print(host)
+  message("see pkg")
   create <-
     github_POST(
       "user/repos",
@@ -137,10 +141,13 @@ use_github <- function(auth_token = github_pat(), private = FALSE, pkg = ".",
       ),
       host = host
     )
-
+ print(create)
   message("* Adding GitHub remote")
   r <- git2r::repository(pkg$path)
+  message(create$clone_url)
+  message(create$ssh_url)
   origin_url <- switch(protocol, https = create$clone_url, ssh = create$ssh_url)
+  message(origin_url)
   git2r::remote_add(r, "origin", origin_url)
 
   message("* Adding GitHub links to DESCRIPTION")

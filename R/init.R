@@ -50,7 +50,7 @@ init_rrtools <- function(path, ...){
   if(isTRUE(dots[["checkGH"]]) & length(dots[["textGH"]]) > 0){
     GH_token  <- dots[["textGH"]]
     GH_private <- dots[["checkGHPrivate"]]
-    GH_string <- paste0('devtools::use_github(auth_token = "',
+    GH_string <- paste0('rrtools::use_github(auth_token = "', # should be devtools::use_github()
                          GH_token,'", private = ',
                          GH_private,')',collapse='')
   } else {
