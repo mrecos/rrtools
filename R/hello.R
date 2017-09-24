@@ -359,6 +359,9 @@ use_readme_rmd <- function(pkg = ".") {
   }
 
   message("* Rendering README.Rmd to README.md for GitHub.")
+  message("TESTING AREA")
+  message(rmarkdown::pandoc_version())
+  message(rmarkdown::pandoc_available())
   rmarkdown::render("README.Rmd", output_format = NULL)
 
   message("* Adding code of conduct.")

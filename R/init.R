@@ -72,7 +72,7 @@ init_rrtools <- function(path, ...){
 
   # build .Rprofile that executes all of the rrtools options
   profile_header <- c(
-    '#message("Executing .Rprofile setup")',
+    'message("Executing .Rprofile setup")',
     # devtools::funct calls are to try to emulate "build & Clean" in Rstudio, not 100%
     'if (Sys.getenv("RSTUDIO") == "1") local({',
       'on.exit({
@@ -95,6 +95,14 @@ init_rrtools <- function(path, ...){
 
   writeLines(contents, con = file.path(path, "ProjectTemplate"))
   writeLines(rprofile_text, con = file.path(path, ".Rprofile"))
+  ### Need to set Pandoc location to renader README.rmd
+  if(Sys.info()['sysname'] == "Darwin"){
+    writeLines("RSTUDIO_PANDOC=/Applications/RStudio.app/Contents/MacOS/pandoc",
+             con = file.path(path, ".Renviron")) # works on OSX
+  } else if (Sys.info()['sysname'] == "Windows"){
+    writeLines("RSTUDIO_PANDOC=/usr/lib/rstudio/bin/pandoc",
+               con = file.path(path, ".Renviron")) # un-tested
+  }
   cat(c(".Rprofile","Rprofile_init"), sep="\n", file=file.path(path, ".gitignore"), append=TRUE)
 }
 
