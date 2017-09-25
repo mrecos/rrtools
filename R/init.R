@@ -95,7 +95,7 @@ init_rrtools <- function(path, ...){
 
   writeLines(contents, con = file.path(path, "ProjectTemplate"))
   writeLines(rprofile_text, con = file.path(path, ".Rprofile"))
-  ### Need to set Pandoc location to renader README.rmd
+  ### Need to set Pandoc location to render README.rmd
   if(Sys.info()['sysname'] == "Darwin"){
     writeLines("RSTUDIO_PANDOC=/Applications/RStudio.app/Contents/MacOS/pandoc",
              con = file.path(path, ".Renviron")) # works on OSX
