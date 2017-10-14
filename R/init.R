@@ -58,7 +58,7 @@ init_rrtools <- function(path, ...){
   if(isTRUE(dots[["checkGH"]]) & length(dots[["textGH"]]) > 0){
     GH_token  <- dots[["textGH"]]
     GH_private <- dots[["checkGHPrivate"]]
-    GH_string <- paste0('devtools::use_github(auth_token = "', # should be devtools::use_github()
+    GH_string <- paste0('devtools::use_github(auth_token = "',
                          GH_token,'", private = ',
                          GH_private,')',collapse='')
   } else {
@@ -136,5 +136,5 @@ use_compendium2 <- function(path, description = getOption("devtools.desc"),
           " * Use other rrtools functions to add components to the compendium \n",
           " Please wait a moment...  \n")
 
-message("end of compendium2")
+message("Finalized compendium build... Opening new package")
 }
